@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import slugify from 'slugify';
-import { connect } from 'react-redux';
-import { init } from '../actions/index';
+import store from '../store'
 
 class Posts extends Component {
 
-  componentDidMount() {
-    this.props.init();
-  }
-
   render() {
-    const posts = this.props.posts;
+    const posts = store.getState().posts;
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-
     return (
       <div>
           {
@@ -35,13 +29,4 @@ class Posts extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    posts: state.posts.slice(0, 10)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  { init }
-)(Posts);
+export default Posts;

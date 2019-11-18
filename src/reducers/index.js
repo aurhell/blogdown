@@ -1,9 +1,12 @@
-import { ADD_POST, GET_POSTS, GET_CATEGORIES, GET_TAGS } from '../constants/ActionTypes';
+import { ADD_POST, GET_POSTS, GET_POST, 
+  RESET_POST, GET_CATEGORIES, GET_TAGS } from '../constants/ActionTypes';
+import slugify from 'slugify';
 
 const initialState = {
   posts: [],
   categories: [],
   tags: [],
+  currentPost: null,
 };
 
 function rootReducer(state = initialState, action) {
@@ -14,9 +17,30 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === GET_POSTS) {
+    if (state.posts.length === 0) {
+      return Object.assign({}, state, {
+        posts: action.payload
+      });
+    }
+    return state;
+  }
+
+  if (action.type === GET_POST) {
+    let currentPost = null;
+    const slug = action.payload;
+    if (slug !== null) {
+      currentPost = state.posts.find((el) => slugify(el.title) ===  slug);
+    }
+
     return Object.assign({}, state, {
-      posts: action.payload
-    });
+      currentPost: currentPost
+    })
+  }
+
+  if (action.type === RESET_POST) {
+    return Object.assign({}, state, {
+      currentPost: null,
+    })
   }
 
   if (action.type === GET_CATEGORIES) {

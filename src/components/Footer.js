@@ -11,9 +11,9 @@ class Footer extends Component {
     };
 
     store.subscribe(() => {
-      this.setState({
-        tags: store.getState().tags,
-      });
+      // this.setState({
+      //   tags: store.getState().tags,
+      // });
     });
   }
 

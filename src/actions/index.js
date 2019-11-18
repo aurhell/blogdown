@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_CATEGORIES, GET_TAGS } from '../constants/ActionTypes';
+import { GET_POSTS, GET_CATEGORIES, GET_TAGS, GET_POST } from '../constants/ActionTypes';
 import parseMarkdown from 'front-matter-markdown';
 
 const importAll = (r) => r.keys().map(r);
@@ -26,6 +26,8 @@ export function init() {
   }  
 };
 
-// export function getPost(slug) {
-//   return { type: GET_POST, slug }
-// }
+export function getPost(slug) {
+  return function (dispatch) {
+    dispatch({ type: GET_POST, payload: slug });
+  }
+}
