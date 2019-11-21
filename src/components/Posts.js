@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import slugify from 'slugify';
 import store from '../store'
+import utils from '../utils';
 
 class Posts extends Component {
 
@@ -18,7 +19,8 @@ class Posts extends Component {
                       <Link to={`/posts/${slugify(post.title)}`}>
                       { post.title } - { post.date.toLocaleDateString('fr-FR', dateOptions) }
                       </Link>
-                      <img src={ post.image} alt={post.title} width="150" height="150"/>
+                      { utils.getImageFromPost(post) }
+                      { utils.getImageFileFromPost(post) }
                     </div>
                   </div>
               </div>

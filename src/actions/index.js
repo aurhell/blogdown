@@ -2,7 +2,7 @@ import { GET_POSTS, GET_CATEGORIES, GET_TAGS, GET_POST } from '../constants/Acti
 import parseMarkdown from 'front-matter-markdown';
 
 const importAll = (r) => r.keys().map(r);
-const markdownFiles = importAll(require.context('../../public/posts', false, /\.md$/)).sort().reverse();
+const markdownFiles = importAll(require.context('../assets/posts', false, /\.md$/)).sort().reverse();
 
 export function init() {
   return async function (dispatch) {

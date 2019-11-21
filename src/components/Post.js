@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getPost } from '../actions/index';
 import store from '../store'
 import { init } from '../actions/index';
+import utils from '../utils';
 
 class Post extends Component {
 
@@ -15,11 +16,22 @@ class Post extends Component {
     this.props.getPost(slug);
   }
 
+  diplayPost(post) {
+    return (
+      <div className="post">
+        <h1>{post.title}</h1> <br/>
+        { utils.getImageFromPost(post) }
+        { utils.getImageFileFromPost(post) }
+        <ReactMarkdown source={post.content}></ReactMarkdown>
+      </div>
+    )
+  }
+
   render() {
     const { currentPost } = this.props;
 
     if (currentPost !== null && currentPost !== undefined) {
-      return <ReactMarkdown source={currentPost.content}></ReactMarkdown>
+      return this.diplayPost(currentPost);
     }
     return null;
   }
