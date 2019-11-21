@@ -15,6 +15,8 @@ export function init() {
       posts.push(parseMarkdown(content));
     });
 
+    posts.sort((current, next) => next.date - current.date);
+
     const categories = [...new Set(posts.map((post) => post.category))];
     let tags = [];
     const parsedTags = posts.map((post) => post.tags.split(',').map((tag) => tag.trim())).flat();
