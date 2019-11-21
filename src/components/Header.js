@@ -12,9 +12,9 @@ class Header extends Component {
     };
 
     store.subscribe(() => {
-      // this.setState({
-      //   categories: store.getState().categories,
-      // });
+      this.setState({
+        categories: store.getState().categories,
+      });
     });
   }
 
