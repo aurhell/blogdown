@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Header from './Header'
 import Posts from './Posts'
 import Post from './Post'
+import Category from './Category'
 import Footer from './Footer'
 
 import { connect } from 'react-redux'
@@ -23,6 +24,7 @@ class Blog extends Component {
         <br />
         <Route exact path="/" component={Posts} />
         <Route path="/posts/:slug" component={Post} />
+        <Route path="/category/:name" component={Category} />
         <br />
         <br />
         <Footer></Footer>
