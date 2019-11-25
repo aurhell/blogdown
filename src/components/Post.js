@@ -16,10 +16,18 @@ class Post extends Component {
     this.props.getPost(slug);
   }
 
+  getTimeToRead(post) {
+    if (post.timeToRead) {
+      return <span style={{ fontStyle: 'italic', fontSize: '0.9rem' }}>{post.timeToRead} min. <br/></span>
+    }
+    return;
+  }
+
   diplayPost(post) {
     return (
       <div className="post">
         <h1>{post.title}</h1> <br/>
+        { this.getTimeToRead(post) }
         { utils.getImageFromPost(post) }
         { utils.getImageFileFromPost(post) }
         <ReactMarkdown source={post.content}></ReactMarkdown>
