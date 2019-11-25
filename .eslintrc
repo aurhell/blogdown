@@ -1,0 +1,48 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "es6": true
+  },
+  "plugins": [
+    "import",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "react-app",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-eval": "error",
+    "import/first": "error",
+    "semi": ["warn", "never"],
+    "max-len": ["warn", 160],
+    "indent": ["error", 2, {
+      "SwitchCase": 1
+    }],
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": [ "dist" ]
+      }
+    ],
+    "no-multiple-empty-lines": "warn",
+    "no-param-reassign": [
+      "warn",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "state"
+        ]
+      }
+    ],
+    "operator-linebreak": ["warn", "after"],
+    "prettier/prettier": "error"
+  }
+}
