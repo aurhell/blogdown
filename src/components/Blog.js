@@ -6,6 +6,7 @@ import Header from './Header'
 import Posts from './Posts'
 import Post from './Post'
 import Category from './Category'
+import Tag from './Tag'
 import Footer from './Footer'
 
 import { connect } from 'react-redux'
@@ -25,6 +26,7 @@ class Blog extends Component {
         <Route exact path="/" component={Posts} />
         <Route path="/posts/:slug" component={Post} />
         <Route path="/category/:name" component={Category} />
+        <Route path="/tags/:name" component={Tag} />
         <br />
         <br />
         <Footer></Footer>
