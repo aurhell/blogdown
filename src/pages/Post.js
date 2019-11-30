@@ -18,11 +18,7 @@ class Post extends Component {
 
   getTimeToRead(post) {
     if (post.timeToRead) {
-      return (
-        <span style={{ fontStyle: 'italic', fontSize: '0.9rem' }}>
-          {post.timeToRead} min. <br />
-        </span>
-      )
+      return <span className="post__time-to-read">{post.timeToRead} min.</span>
     }
     return
   }
@@ -30,11 +26,13 @@ class Post extends Component {
   diplayPost(post) {
     return (
       <div className="post">
-        <h1>{post.title}</h1> <br />
+        <h1 className="post__title">{post.title}</h1>
         {this.getTimeToRead(post)}
-        {utils.getImageFromPost(post)}
-        {utils.getImageFileFromPost(post)}
-        <ReactMarkdown source={post.content}></ReactMarkdown>
+        <div className="post__image">{utils.getImageFromPost(post)}</div>
+        <div className="post__image">{utils.getImageFileFromPost(post)}</div>
+        <div className="post__content">
+          <ReactMarkdown source={post.content}></ReactMarkdown>
+        </div>
       </div>
     )
   }
