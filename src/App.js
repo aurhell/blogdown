@@ -3,12 +3,12 @@ import { BrowserRouter } from 'react-router-dom'
 import store from './store'
 import { Provider } from 'react-redux'
 import './App.css'
-import Blog from './components/Blog'
+import Blog from './pages/Blog'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Provider store={store}>
           <BrowserRouter>
             <Blog></Blog>

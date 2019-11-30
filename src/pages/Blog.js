@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-
-import Header from './Header'
-import Posts from './Posts'
-import Post from './Post'
-import Category from './Category'
-import Tag from './Tag'
-import Footer from './Footer'
-
 import { connect } from 'react-redux'
 import { init } from '../actions/index'
+
+import Header from '../components/Header'
+import Category from '../components/Category'
+import Footer from '../components/Footer'
+
+import Posts from './Posts'
+import Post from './Post'
+import Tag from '../pages/Tag'
 
 class Blog extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class Blog extends Component {
 
   render() {
     return (
-      <div className="Blog">
+      <div className="blog">
         <Header></Header>
         <br />
         <br />
