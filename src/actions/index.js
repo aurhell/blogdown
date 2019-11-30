@@ -1,14 +1,14 @@
 import {
-  GET_POSTS,
+  GET_ARTICLES,
   GET_CATEGORIES,
   GET_TAGS,
-  GET_POST,
+  GET_ARTICLE,
 } from '../constants/ActionTypes'
 import parseMarkdown from 'front-matter-markdown'
 
 const importAll = r => r.keys().map(r)
 const markdownFiles = importAll(
-  require.context('../assets/posts', false, /\.md$/)
+  require.context('../assets/articles', false, /\.md$/)
 )
   .sort()
   .reverse()
@@ -19,29 +19,29 @@ export function init() {
       markdownFiles.map(file => fetch(file).then(res => res.text()))
     ).catch(err => console.error(err)) //eslint-disable-line
 
-    let posts = []
+    let articles = []
 
     markdownFilesContent.forEach(content => {
-      posts.push(parseMarkdown(content))
+      articles.push(parseMarkdown(content))
     })
 
-    posts.sort((current, next) => next.date - current.date)
+    articles.sort((current, next) => next.date - current.date)
 
-    const categories = [...new Set(posts.map(post => post.category))]
+    const categories = [...new Set(articles.map(article => article.category))]
     let tags = []
-    const parsedTags = posts
-      .map(post => post.tags.split(',').map(tag => tag.trim()))
+    const parsedTags = articles
+      .map(article => article.tags.split(',').map(tag => tag.trim()))
       .flat()
     tags = [...new Set(parsedTags)]
 
-    dispatch({ type: GET_POSTS, payload: posts })
+    dispatch({ type: GET_ARTICLES, payload: articles })
     dispatch({ type: GET_CATEGORIES, payload: categories })
     dispatch({ type: GET_TAGS, payload: tags })
   }
 }
 
-export function getPost(slug) {
+export function getArticle(slug) {
   return function(dispatch) {
-    dispatch({ type: GET_POST, payload: slug })
+    dispatch({ type: GET_ARTICLE, payload: slug })
   }
 }

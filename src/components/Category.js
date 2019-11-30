@@ -7,9 +7,9 @@ import utils from '../utils'
 class Category extends Component {
   render() {
     const category = this.props.match.params.name //eslint-disable-line
-    const posts = store
+    const articles = store
       .getState()
-      .posts.filter(post => post.category === category)
+      .articles.filter(article => article.category === category)
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -18,16 +18,16 @@ class Category extends Component {
 
     return (
       <div>
-        {posts.map((post, idx) => (
+        {articles.map((article, idx) => (
           <div className="card" key={idx}>
             <div className="card-content">
               <div className="content">
-                <Link to={`/posts/${slugify(post.title)}`}>
-                  {post.title} -{' '}
-                  {post.date.toLocaleDateString('fr-FR', dateOptions)}
+                <Link to={`/articles/${slugify(article.title)}`}>
+                  {article.title} -{' '}
+                  {article.date.toLocaleDateString('fr-FR', dateOptions)}
                 </Link>
-                {utils.getImageFromPost(post)}
-                {utils.getImageFileFromPost(post)}
+                {utils.getImageFromArticle(article)}
+                {utils.getImageFileFromArticle(article)}
               </div>
             </div>
           </div>

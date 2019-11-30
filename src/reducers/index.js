@@ -1,51 +1,51 @@
 import {
-  ADD_POST,
-  GET_POSTS,
-  GET_POST,
-  RESET_POST,
+  ADD_ARTICLE,
+  GET_ARTICLES,
+  GET_ARTICLE,
+  RESET_ARTICLE,
   GET_CATEGORIES,
   GET_TAGS,
 } from '../constants/ActionTypes'
 import slugify from 'slugify'
 
 const initialState = {
-  posts: [],
+  articles: [],
   categories: [],
   tags: [],
-  currentPost: null,
+  currentArticle: null,
 }
 
 function rootReducer(state = initialState, action) {
-  if (action.type === ADD_POST) {
+  if (action.type === ADD_ARTICLE) {
     return Object.assign({}, state, {
-      posts: state.posts.concat(action.payload),
+      articles: state.articles.concat(action.payload),
     })
   }
 
-  if (action.type === GET_POSTS) {
-    if (state.posts.length === 0) {
+  if (action.type === GET_ARTICLES) {
+    if (state.articles.length === 0) {
       return Object.assign({}, state, {
-        posts: action.payload,
+        articles: action.payload,
       })
     }
     return state
   }
 
-  if (action.type === GET_POST) {
-    let currentPost = null
+  if (action.type === GET_ARTICLE) {
+    let currentArticle = null
     const slug = action.payload
     if (slug !== null) {
-      currentPost = state.posts.find(el => slugify(el.title) === slug)
+      currentArticle = state.articles.find(el => slugify(el.title) === slug)
     }
 
     return Object.assign({}, state, {
-      currentPost: currentPost,
+      currentArticle: currentArticle,
     })
   }
 
-  if (action.type === RESET_POST) {
+  if (action.type === RESET_ARTICLE) {
     return Object.assign({}, state, {
-      currentPost: null,
+      currentArticle: null,
     })
   }
 

@@ -4,9 +4,9 @@ import slugify from 'slugify'
 import store from '../store'
 import utils from '../utils'
 
-class Posts extends Component {
+class Articles extends Component {
   render() {
-    const posts = store.getState().posts
+    const articles = store.getState().articles
     const dateOptions = {
       year: 'numeric',
       month: 'long',
@@ -15,16 +15,16 @@ class Posts extends Component {
 
     return (
       <div>
-        {posts.map((post, idx) => (
+        {articles.map((article, idx) => (
           <div className="card" key={idx}>
             <div className="card-content">
               <div className="content">
-                <Link to={`/posts/${slugify(post.title)}`}>
-                  {post.title} -{' '}
-                  {post.date.toLocaleDateString('fr-FR', dateOptions)}
+                <Link to={`/articles/${slugify(article.title)}`}>
+                  {article.title} -{' '}
+                  {article.date.toLocaleDateString('fr-FR', dateOptions)}
                 </Link>
-                {utils.getImageFromPost(post)}
-                {utils.getImageFileFromPost(post)}
+                {utils.getImageFromArticle(article)}
+                {utils.getImageFileFromArticle(article)}
               </div>
             </div>
           </div>
@@ -34,4 +34,4 @@ class Posts extends Component {
   }
 }
 
-export default Posts
+export default Articles

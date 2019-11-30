@@ -8,8 +8,8 @@ import Header from '../components/Header'
 import Category from '../components/Category'
 import Footer from '../components/Footer'
 
-import Posts from './Posts'
-import Post from './Post'
+import Articles from './Articles'
+import Article from './Article'
 import Tag from '../pages/Tag'
 
 class Blog extends Component {
@@ -23,8 +23,8 @@ class Blog extends Component {
         <Header></Header>
         <br />
         <br />
-        <Route exact path="/" component={Posts} />
-        <Route path="/posts/:slug" component={Post} />
+        <Route exact path="/" component={Articles} />
+        <Route path="/articles/:slug" component={Article} />
         <Route path="/category/:name" component={Category} />
         <Route path="/tags/:name" component={Tag} />
         <br />
@@ -41,7 +41,7 @@ Blog.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts.slice(0, 10),
+    articles: state.articles.slice(0, 10),
   }
 }
 

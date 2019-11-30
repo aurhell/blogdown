@@ -1,16 +1,20 @@
 import React from 'react'
 
 export default {
-  getImageFromPost: post => {
-    if (post.image) {
-      return <img src={post.image} alt={post.title} width="150" height="150" />
+  getImageFromArticle: article => {
+    if (article.image) {
+      return (
+        <img src={article.image} alt={article.title} width="150" height="150" />
+      )
     }
   },
-  getImageFileFromPost: post => {
-    if (post.imageFile) {
+  getImageFileFromArticle: article => {
+    if (article.imageFile) {
       try {
-        const imgPath = require(`./assets/posts/${post.imageFile}`)
-        return <img src={imgPath} alt={post.title} width="150" height="150" />
+        const imgPath = require(`./assets/articles/${article.imageFile}`)
+        return (
+          <img src={imgPath} alt={article.title} width="150" height="150" />
+        )
       } catch (e) {
         // just ignore it if not found
       }
