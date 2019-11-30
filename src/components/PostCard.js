@@ -18,7 +18,9 @@ class PostCard extends Component {
               {post.date.toLocaleDateString('fr-FR', config.dateOptions)}
             </Link>
           </span>
-          <div className="post-card__image">{utils.generatePostImageTag(post)}</div>
+          <div className="post-card__image">
+            {utils.generatePostImageTag(post)}
+          </div>
         </div>
       </div>
     )
