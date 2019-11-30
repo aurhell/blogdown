@@ -3,10 +3,12 @@ import store from '../store'
 
 import PostCard from '../components/PostCard'
 
-class Tag extends Component {
+class Category extends Component {
   render() {
-    const tag = this.props.match.params.name //eslint-disable-line
-    const posts = store.getState().posts.filter(post => post.tags.includes(tag))
+    const category = this.props.match.params.name //eslint-disable-line
+    const posts = store
+      .getState()
+      .posts.filter(post => post.category === category)
 
     return (
       <div>
@@ -18,4 +20,4 @@ class Tag extends Component {
   }
 }
 
-export default Tag
+export default Category

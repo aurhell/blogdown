@@ -5,12 +5,12 @@ import { connect } from 'react-redux'
 import { init } from '../actions/index'
 
 import Header from '../components/Header'
-import Category from '../components/Category'
 import Footer from '../components/Footer'
 
 import Posts from './Posts'
 import Post from './Post'
-import Tag from '../pages/Tag'
+import Category from './Category'
+import Tag from './Tag'
 
 class Blog extends Component {
   componentDidMount() {
