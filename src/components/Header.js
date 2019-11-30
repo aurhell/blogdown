@@ -17,16 +17,31 @@ class Header extends Component {
     })
   }
 
-  render() {
-    const listCategories = this.state.categories.map(category => (
-      <Link to={`/category/${category}`} key={category}>
+  getCategoryLink(category) {
+    return (
+      <Link
+        to={`/category/${category}`}
+        key={category}
+        className="header__link"
+      >
         {category}
       </Link>
-    ))
+    )
+  }
+
+  getCategoryList() {
+    return this.state.categories.map(category => this.getCategoryLink(category))
+  }
+
+  render() {
     return (
-      <div>
-        <Link to="/">Home</Link>
-        {listCategories}
+      <div className="header">
+        <div className="header__links">
+          <Link to="/" className="header__link">
+            Home
+          </Link>
+          {this.getCategoryList()}
+        </div>
       </div>
     )
   }

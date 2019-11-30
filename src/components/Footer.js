@@ -19,15 +19,25 @@ class Footer extends Component {
 
   getTagLink(tag) {
     return (
-      <Link to={`/tags/${tag}`} key={tag}>
+      <Link to={`/tags/${tag}`} key={tag} className="footer__tag">
         {tag}
       </Link>
     )
   }
 
+  getTagList() {
+    return this.state.tags.map(tag => this.getTagLink(tag))
+  }
+
   render() {
-    const listTags = this.state.tags.map(tag => this.getTagLink(tag))
-    return <div>{listTags}</div>
+    return (
+      <div className="footer">
+        <div className="footer__tags">{this.getTagList()}</div>
+        <span className="footer__copyright">
+          Copyright @Aurélien Girault - 2019
+        </span>
+      </div>
+    )
   }
 }
 
