@@ -28,8 +28,7 @@ class Post extends Component {
       <div className="post">
         <h1 className="post__title">{post.title}</h1>
         {this.getTimeToRead(post)}
-        <div className="post__image">{utils.getImageFromPost(post)}</div>
-        <div className="post__image">{utils.getImageFileFromPost(post)}</div>
+        <div className="post__image">{utils.generatePostImageTag(post)}</div>
         <div className="post__content">
           <ReactMarkdown source={post.content}></ReactMarkdown>
         </div>

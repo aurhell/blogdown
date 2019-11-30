@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom'
 import slugify from 'slugify'
 import PropTypes from 'prop-types'
 import utils from '../utils'
+import config from '../config'
 
 class PostCard extends Component {
   render() {
     const post = this.props.post
-    const dateOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }
 
     return (
       <div className="post-card">
@@ -19,13 +15,10 @@ class PostCard extends Component {
           <span className="post-card__link">
             <Link to={`/posts/${slugify(post.title)}`}>
               {post.title} -{' '}
-              {post.date.toLocaleDateString('fr-FR', dateOptions)}
+              {post.date.toLocaleDateString('fr-FR', config.dateOptions)}
             </Link>
           </span>
-          <div className="post-card__image">
-            {utils.getImageFromPost(post)}
-            {utils.getImageFileFromPost(post)}
-          </div>
+          <div className="post-card__image">{utils.generatePostImageTag(post)}</div>
         </div>
       </div>
     )
