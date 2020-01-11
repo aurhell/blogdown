@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import store from '../store'
 import { Link } from 'react-router-dom'
 
+import SocialLinks from './SocialLinks'
+
 class Footer extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +35,7 @@ class Footer extends Component {
     return (
       <div className="footer">
         <div className="footer__tags">{this.getTagList()}</div>
+        <SocialLinks />
         <span className="footer__copyright">
           Copyright @Aurélien Girault - {new Date().getFullYear()}
         </span>
