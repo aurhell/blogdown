@@ -34,7 +34,7 @@ class Footer extends Component {
       <div className="footer">
         <div className="footer__tags">{this.getTagList()}</div>
         <span className="footer__copyright">
-          Copyright @Aurélien Girault - 2019
+          Copyright @Aurélien Girault - {new Date().getFullYear()}
         </span>
       </div>
     )
