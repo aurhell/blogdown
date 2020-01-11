@@ -4,13 +4,13 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { init } from '../actions/index'
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import Header from './Header'
+import Footer from './Footer'
 
-import Posts from './Posts'
-import Post from './Post'
-import Category from './Category'
-import Tag from './Tag'
+import Posts from '../pages/Posts'
+import Post from '../pages/Post'
+import Category from '../pages/Category'
+import Tag from '../pages/Tag'
 
 class Blog extends Component {
   componentDidMount() {
@@ -19,16 +19,15 @@ class Blog extends Component {
 
   render() {
     return (
-      <div className="blog">
+      <div
+        // eslint-disable-next-line no-constant-condition
+        className={'blog theme'}
+      >
         <Header></Header>
-        <br />
-        <br />
         <Route exact path="/" component={Posts} />
         <Route path="/posts/:slug" component={Post} />
         <Route path="/category/:name" component={Category} />
         <Route path="/tags/:name" component={Tag} />
-        <br />
-        <br />
         <Footer></Footer>
       </div>
     )
