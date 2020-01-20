@@ -8,7 +8,7 @@ class Posts extends Component {
     const posts = store.getState().posts
 
     return (
-      <div>
+      <div className="posts">
         {posts.map((post, idx) => (
           <PostCard key={idx} post={post}></PostCard>
         ))}

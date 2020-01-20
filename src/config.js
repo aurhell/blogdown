@@ -8,7 +8,8 @@ const config = {
   },
   preferedRessource: RESSOURCE_TYPES.FILE,
   addHomePage: true,
-  addAboutPage: false,
+  addAboutPage: true,
+  yourName: 'Aurélien Girault',
   social: [
     {
       name: 'github',

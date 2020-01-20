@@ -10,5 +10,8 @@
 
 // ---[LAYOUT]
 @import './layout/blog.scss';
+@import './layout/header.scss';
+@import './layout/footer.scss';
 
-// ---[MODULE]
+// ---[COMPONENTS]
+@import './components/social-links.scss';

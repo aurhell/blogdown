@@ -1,0 +1,14 @@
+.header {
+  padding: 20px 0;
+
+  &__title {
+    font-size: 2rem;
+    padding: 20px 0;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+  }
+}

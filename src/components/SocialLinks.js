@@ -24,7 +24,12 @@ class SocialLinks extends Component {
 
       IconComponent = comp[social.name]
       return (
-        <a href={social.url} alt={social.name} key={social.name}>
+        <a
+          className="social__link"
+          href={social.url}
+          alt={social.name}
+          key={social.name}
+        >
           <IconComponent />
         </a>
       )
@@ -39,7 +44,7 @@ class SocialLinks extends Component {
   render() {
     return (
       <div className="social">
-        <span className="social__link">{this.getSocialLinkList()}</span>
+        <span className="social__links">{this.getSocialLinkList()}</span>
       </div>
     )
   }
