@@ -22,7 +22,9 @@ export function init() {
     let posts = []
 
     markdownFilesContent.forEach(content => {
-      posts.push(parseMarkdown(content))
+      if (content.startsWith('---')) {
+        posts.push(parseMarkdown(content))
+      }
     })
 
     posts.sort((current, next) => next.date - current.date)
@@ -30,10 +32,13 @@ export function init() {
     const categories = [...new Set(posts.map(post => post.category))]
     let tags = []
     const parsedTags = posts
-      .map(post => post.tags.split(',').map(tag => tag.trim()))
+      .map(post =>
+        post.tag ? post.tags.split(',').map(tag => tag.trim()) : null
+      )
       .flat()
     tags = [...new Set(parsedTags)]
 
+    posts = posts.filter(post => typeof post === 'object' && post !== null)
     dispatch({ type: GET_POSTS, payload: posts })
     dispatch({ type: GET_CATEGORIES, payload: categories })
     dispatch({ type: GET_TAGS, payload: tags })
