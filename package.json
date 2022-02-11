@@ -5,7 +5,7 @@
   "homepage": ".",
   "dependencies": {
     "front-matter-markdown": "^0.4.3",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons": "^3.8.0",
